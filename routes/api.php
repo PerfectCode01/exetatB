@@ -12,6 +12,8 @@ use App\Http\Controllers\Api\QuestionController;
 
 Route::apiResource('sections', SectionController::class);
 Route::apiResource('questions', QuestionController::class);
+
+
 Route::apiResource('editions', EditionController::class);
 Route::apiResource('cours', CoursController::class);
 Route::apiResource('categories', CategorieController::class);

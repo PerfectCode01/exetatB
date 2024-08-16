@@ -1,17 +1,12 @@
 <?php
-
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AssertionResource\Pages;
-use App\Filament\Resources\AssertionResource\RelationManagers;
 use App\Models\Assertion;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AssertionResource extends Resource
 {
@@ -19,7 +14,7 @@ class AssertionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+    public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
@@ -29,12 +24,12 @@ class AssertionResource extends Resource
                 Forms\Components\Toggle::make('is_correct')
                     ->required(),
                 Forms\Components\Select::make('question_id')
-                    ->relationship('question', 'id')
+                    ->relationship('question', 'lib') // Utilisez 'lib' ou tout autre attribut descriptif
                     ->required(),
             ]);
     }
 
-    public static function table(Table $table): Table
+    public static function table(Tables\Table $table): Tables\Table
     {
         return $table
             ->columns([
@@ -42,9 +37,10 @@ class AssertionResource extends Resource
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_correct')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('questions_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('question_id')
+                    ->label('Question')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -65,6 +61,7 @@ class AssertionResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+            // ->defaultSort('question.lib'); // Trier par la question
     }
 
     public static function getRelations(): array

@@ -18,8 +18,8 @@ class QuestionResource extends JsonResource
         return [
             'id'=>$this->id,
             'lib'=>$this->lib,
-            'cours_id'=>$this->cours_id,
-            'editions_id'=>$this->editions_id,
+            'cour_id'=>$this->cour_id,
+            'edition_id'=>$this->edition_id,
             'point'=>$this->point,
         ];
     }
