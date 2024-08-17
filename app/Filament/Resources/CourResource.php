@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CourResource extends Resource
 {
     protected static ?string $model = Cour::class;
+    protected static ?int $navigationSort = 3;
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

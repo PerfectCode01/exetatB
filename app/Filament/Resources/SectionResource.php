@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class SectionResource extends Resource
 {
     protected static ?string $model = Section::class;
+    protected static ?int $navigationSort = 1;
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -24,8 +26,7 @@ class SectionResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('lib')
-                    ->required()
-                    ->maxLength(255),
+                    ->required(),
                 Forms\Components\Textarea::make('desc')
                     ->required()
                     ->columnSpanFull(),

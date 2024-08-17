@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('lib');
             $table->longText('desc');
-            $table->bigInteger('section_id');
             $table->timestamps();
         });
     }

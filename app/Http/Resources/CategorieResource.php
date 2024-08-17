@@ -19,7 +19,6 @@ class CategorieResource extends JsonResource
             'id' => $this->id,
             'lib' => $this->lib,
             'desc' => $this->desc,
-            'sections_id' => $this->sections_id,
         ];
     }
 }
