@@ -19,10 +19,6 @@ class CategorieResource extends JsonResource
             'id' => $this->id,
             'lib' => $this->lib,
             'desc' => $this->desc,
-<<<<<<< HEAD
-            'section_id' => $this->section_id,
-=======
->>>>>>> moodif
         ];
     }
 }

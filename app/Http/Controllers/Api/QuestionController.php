@@ -23,6 +23,7 @@ class QuestionController extends Controller
             ->where('cours.categorie_id', $category)
             ->where('categories.section_id',$section)
             ->get();
+            
         if ($results->count() > 0) {
             // dd($results);
             return QuestionResource::collection($results);
