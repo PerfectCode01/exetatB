@@ -33,7 +33,7 @@ class CategorieResource extends Resource
                 //     ->required()
                 //     ->numeric(),
                 Forms\Components\Select::make('section_id')
-                    ->relationship('section', 'lib')
+                    ->relationship('section', 'id')
                     ->required(),
             ]);
     }
@@ -44,7 +44,7 @@ class CategorieResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('lib')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('section.lib')
+                Tables\Columns\TextColumn::make('section.id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

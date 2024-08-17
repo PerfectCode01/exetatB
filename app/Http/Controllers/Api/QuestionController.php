@@ -30,15 +30,7 @@ class QuestionController extends Controller
             return response()->json(['message' => 'Pas de question disponible'], 404);
         }
     }
-    // public function index(){
-    //     $questions = Question::get();
-    //     if($questions->count() > 0){
-    //         return QuestionResource::collection($questions);
-    //     } else {
-    //         return response()->json(['message'=>'Pas de question disponible'],200);
-    //     }   
-    // }
-
+    
     public function show(Question $question){
         return new QuestionResource($question);
     }

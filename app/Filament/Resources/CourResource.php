@@ -30,7 +30,7 @@ class CourResource extends Resource
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\Select::make('categorie_id')
-                    ->relationship('categorie', 'lib')
+                    ->relationship('categorie', 'id')
                     ->required(),
                 
             ]);
@@ -42,7 +42,7 @@ class CourResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('lib')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('categorie.lib')
+                Tables\Columns\TextColumn::make('categorie.id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
