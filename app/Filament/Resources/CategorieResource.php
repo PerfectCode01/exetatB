@@ -2,39 +2,41 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategorieResource\Pages;
-use App\Filament\Resources\CategorieResource\RelationManagers;
-use App\Models\Categorie;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Categorie;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TagsColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\CheckboxList;
+use App\Filament\Resources\CategorieResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\CategorieResource\RelationManagers;
 
 class CategorieResource extends Resource
 {
     protected static ?string $model = Categorie::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort = 2;
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('lib')
-                    ->required()
-                    ->maxLength(255),
+                    ->required(), 
                 Forms\Components\Textarea::make('desc')
                     ->required()
                     ->columnSpanFull(),
-                // Forms\Components\TextInput::make('sections_id')
-                //     ->required()
-                //     ->numeric(),
-                Forms\Components\Select::make('section_id')
-                    ->relationship('section', 'id')
-                    ->required(),
+                CheckboxList::make('sections')
+                ->searchable()
+                // ->multiple()
+                ->relationship('sections','lib')
             ]);
     }
 
@@ -44,9 +46,6 @@ class CategorieResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('lib')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('section.id')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -55,6 +54,8 @@ class CategorieResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TagsColumn::make('sections.lib') // Affiche les noms des sections associées
+                    ->label('Sections'),
             ])
             ->filters([
                 //

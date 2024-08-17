@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditEdition extends EditRecord
 {
     protected static string $resource = EditionResource::class;
+    protected static ?int $navigationSort = 4;
 
     protected function getHeaderActions(): array
     {

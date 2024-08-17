@@ -19,7 +19,7 @@ class CategorieController extends Controller
             return response()->json(['message'=>'pas de categorie disponible'],200);
         }
     }
-    
+
     public function show(Categorie $categorie){
         return new CategorieResource($categorie);
     }
