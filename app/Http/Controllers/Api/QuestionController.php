@@ -18,11 +18,15 @@ class QuestionController extends Controller
 
         $results = DB::table('questions')
             ->join('cours', 'questions.cour_id', '=', 'cours.id')
-            ->join('categories', 'cours.categorie_id','=','categories.id')
+            ->join('categories', 'cours.categorie_id', '=', 'categories.id')
+            ->join('categorie_section', 'categories.id', '=', 'categorie_section.categorie_id')
+            ->join('sections', 'categorie_section.section_id', '=', 'sections.id')
             ->select('questions.*')
             ->where('cours.categorie_id', $category)
-            ->where('categories.section_id',$section)
+            ->where('sections.id', $section)
             ->get();
+            
+
             
         if ($results->count() > 0) {
             // dd($results);
