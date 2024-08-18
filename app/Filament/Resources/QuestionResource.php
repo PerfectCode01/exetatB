@@ -2,16 +2,16 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\QuestionResource\Pages;
-use App\Filament\Resources\QuestionResource\RelationManagers;
-use App\Models\Question;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Question;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\QuestionResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\QuestionResource\RelationManagers;
 
 class QuestionResource extends Resource
 {
@@ -35,6 +35,7 @@ class QuestionResource extends Resource
                 Forms\Components\TextInput::make('point')
                     ->required()
                     ->numeric(),
+                
             ]);
     }
 
@@ -78,7 +79,7 @@ class QuestionResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\AssertionsRelationManager::class
         ];
     }
 

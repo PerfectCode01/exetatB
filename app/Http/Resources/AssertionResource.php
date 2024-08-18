@@ -19,7 +19,7 @@ class AssertionResource extends JsonResource
             'id'=>$this->id,
             'lib'=>$this->lib,
             'is_correct'=>$this->is_correct,
-            'questions_id'=>$this->questions_id,
+            'question_id'=>$this->question_id,
         ];
     }
 }
