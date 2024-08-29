@@ -32,7 +32,7 @@ class CourResource extends Resource
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\Select::make('categorie_id')
-                    ->relationship('categorie', 'id')
+                    ->relationship('categorie', 'lib')
                     ->required(),
                 
             ]);
