@@ -16,4 +16,10 @@ class ListUsers extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+    protected function getTableActions(): array
+    {
+        return [
+            Filament\Pages\Actions\EditAction::make()->modalHeading('Modifier le user'),
+        ];
+    }
 }

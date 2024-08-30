@@ -21,6 +21,11 @@ class AssertionsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('lib')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Toggle::make('is_correct')
+                    ->required(),
+                Forms\Components\Select::make('question_id')
+                    ->relationship('question', 'lib') // Utilisez 'lib' ou tout autre attribut descriptif
+                    ->required(),
             ]);
     }
 

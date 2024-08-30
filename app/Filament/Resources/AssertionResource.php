@@ -12,7 +12,10 @@ class AssertionResource extends Resource
 {
     protected static ?string $model = Assertion::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-check-circle';
+    protected static ?string $navigationGroup = 'Exetat';
+
+
 
     public static function form(Forms\Form $form): Forms\Form
     {
@@ -50,6 +53,7 @@ class AssertionResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            
             ->filters([
                 //
             ])

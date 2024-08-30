@@ -17,9 +17,12 @@ class CourResource extends Resource
 {
     protected static ?string $model = Cour::class;
     protected static ?int $navigationSort = 3;
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
+    protected static ?string $navigationGroup = 'Exetat';
 
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+
 
     public static function form(Form $form): Form
     {
